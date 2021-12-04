@@ -17,7 +17,36 @@ class FrenchDeck:
         else:
             print('no')
             return False
+    
         
 class Vector:
-    
-    
+    def __init__(self,x=0,y=0):
+        x:int
+        y:int
+        reference:str
+        self.x=x
+        self.y=y
+    def __repr__(self):
+        return f'Vector({self.x},{self.y})'
+    def __abs__(self):
+        return math.hypot(self.x,self.y)
+    def __bool__(self):
+        return bool(abs(self))
+    def __add__(self,other):
+        x=self.x+other.x
+        y=self.y+other.y
+        return Vector(x,y)
+    def __mul__(self,const):
+        return Vector(self.x*const,self.y*const)
+    def __sub__(self,other):
+        x=self.x-other.x
+        y=self.y-other.y
+        return Vector(x,y)
+    def __truediv__(self,const):
+        return Vector(self.x/const,self.y/const)
+    def __floordiv__(self,const):
+        return Vector(self.x//const,self.y//const)
+    def __matmul__(self,other):
+        return self.x*other.x+self.y*other.y
+    def __lt__(self,other):
+        return self.x<other.x and self.y<other.y
